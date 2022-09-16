@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    Widget currentWidgetPage = const Text('!!!!');
+    Widget currentWidgetPage = const Text('');
 
     switch (selectedIndex) {
       case 0:

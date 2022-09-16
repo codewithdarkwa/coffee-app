@@ -35,7 +35,19 @@ class _HomeState extends State<Home> {
         title: Image.asset('images/logo.png'),
         centerTitle: true,
       ),
-      body: OffersPage(),
+      body: const OffersPage(),
+      bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Theme.of(context).primaryColor,
+          selectedItemColor: Colors.yellow.shade400,
+          unselectedItemColor: Colors.brown.shade50,
+          items: const [
+            BottomNavigationBarItem(label: "Menu", icon: Icon(Icons.coffee)),
+            BottomNavigationBarItem(
+                label: "Offers", icon: Icon(Icons.local_offer)),
+            BottomNavigationBarItem(
+                label: "My Order",
+                icon: Icon(Icons.shopping_cart_checkout_outlined)),
+          ]),
     );
   }
 }

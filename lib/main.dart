@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/datamanager.dart';
 import 'package:flutter_application_1/pages/menupage.dart';
 import 'package:flutter_application_1/pages/offerspage.dart';
 import 'package:flutter_application_1/pages/orderpage.dart';
@@ -29,6 +30,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var dataManager = DataManager();
   var selectedIndex = 0;
 
   @override
@@ -37,13 +39,15 @@ class _HomeState extends State<Home> {
 
     switch (selectedIndex) {
       case 0:
-        currentWidgetPage = const MenuPage();
+        currentWidgetPage = MenuPage(
+          dataManager: dataManager,
+        );
         break;
       case 1:
         currentWidgetPage = const OffersPage();
         break;
       case 2:
-        currentWidgetPage = const OrderPage();
+        currentWidgetPage = OrderPage(dataManager: dataManager);
         break;
     }
     return Scaffold(

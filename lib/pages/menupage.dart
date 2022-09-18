@@ -8,7 +8,10 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var p = Product(id: 1, name: "Dummy product", price: 1.25, image: "");
-    return ProductItem(product: p);
+    var q = Product(id: 1, name: "Dummy product", price: 1.25, image: "");
+    return ListView(
+      children: [ProductItem(product: p), ProductItem(product: q)],
+    );
   }
 }
 
@@ -28,8 +31,9 @@ class ProductItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset('images/black_coffee.png'),
-              Row(children: [
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -43,6 +47,13 @@ class ProductItem extends StatelessWidget {
                       child: Text("\$${product.price}"),
                     ),
                   ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Add"),
+                  ),
                 ),
               ])
             ],

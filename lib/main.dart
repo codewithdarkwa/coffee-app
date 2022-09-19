@@ -14,12 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Coffee Masters',
-        theme: ThemeData(
-          primarySwatch: Colors.brown,
-        ),
-        home: const Home());
+      debugShowCheckedModeBanner: false,
+      title: 'Coffee Masters',
+      theme: ThemeData(
+        primarySwatch: Colors.brown,
+      ),
+      home: const Home(),
+    );
   }
 }
 
@@ -30,8 +31,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var dataManager = DataManager();
-  var selectedIndex = 0;
+  DataManager dataManager = DataManager();
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -57,23 +58,32 @@ class _HomeState extends State<Home> {
       ),
       body: currentWidgetPage,
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: selectedIndex,
-          onTap: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-          backgroundColor: Theme.of(context).primaryColor,
-          selectedItemColor: Colors.yellow.shade400,
-          unselectedItemColor: Colors.brown.shade50,
-          items: const [
-            BottomNavigationBarItem(label: "Menu", icon: Icon(Icons.coffee)),
-            BottomNavigationBarItem(
-                label: "Offers", icon: Icon(Icons.local_offer)),
-            BottomNavigationBarItem(
-                label: "My Order",
-                icon: Icon(Icons.shopping_cart_checkout_outlined)),
-          ]),
+        currentIndex: selectedIndex,
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: Colors.yellow.shade400,
+        unselectedItemColor: Colors.brown.shade50,
+        items: const [
+          BottomNavigationBarItem(
+            label: "Menu",
+            icon: Icon(Icons.coffee),
+          ),
+          BottomNavigationBarItem(
+            label: "Offers",
+            icon: Icon(Icons.local_offer),
+          ),
+          BottomNavigationBarItem(
+            label: "My Order",
+            icon: Icon(
+              Icons.shopping_cart_checkout_outlined,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

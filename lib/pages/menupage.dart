@@ -15,7 +15,14 @@ class MenuPage extends StatelessWidget {
           if (snapshot.hasData) {
             //The future has finished data is ready
             var categories = snapshot.data as List<Category>;
-            return Text("There are ${categories.length} categories");
+            return ListView.builder(
+                itemCount: categories.length,
+                itemBuilder: ((context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(categories[index].name),
+                  );
+                }));
           } else {
             if (snapshot.hasError) {
               //Data not available because of an error

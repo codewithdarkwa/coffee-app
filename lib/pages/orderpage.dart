@@ -8,6 +8,6 @@ class OrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('This is order page');
+    return Container();
   }
 }

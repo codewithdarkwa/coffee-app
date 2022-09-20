@@ -9,20 +9,25 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var p = Product(id: 1, name: "Dummy product", price: 1.25, image: "");
-    var q = Product(id: 1, name: "Dummy product", price: 1.25, image: "");
-    return ListView(
-      children: [
-        ProductItem(
-          product: p,
-          onAdd: () {},
-        ),
-        ProductItem(
-          product: q,
-          onAdd: () {},
-        )
-      ],
-    );
+    return FutureBuilder(
+        future: dataManager.getMenu(),
+        builder: ((context, snapshot) {
+          if (snapshot.hasData) {
+            //The future has finished data is ready
+            var categories = snapshot.data as List<Category>;
+            return Text("There are ${categories.length} categories");
+          } else {
+            if (snapshot.hasError) {
+              //Data not available because of an error
+              return const Text("There was an error loading the data");
+            } else {
+              //Data is in progress
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          }
+        }));
   }
 }
 
